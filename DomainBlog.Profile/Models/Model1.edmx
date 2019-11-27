@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BlogProfileModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AbumImage">
+          <Key>
+            <PropertyRef Name="AbumImageID" />
+          </Key>
+          <Property Name="AbumImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameAbum" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="TypeAbum" Type="int" />
+        </EntityType>
+        <EntityType Name="Auth_Assign">
+          <Key>
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="ObjectID" />
+            <PropertyRef Name="ObjectType" />
+          </Key>
+          <Property Name="Permission" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ObjectID" Type="int" Nullable="false" />
+          <Property Name="ObjectType" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_AssignEntity">
+          <Key>
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="ObjectID" />
+            <PropertyRef Name="EntityID" />
+            <PropertyRef Name="ObjectType" />
+            <PropertyRef Name="EntityType" />
+          </Key>
+          <Property Name="Permission" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ObjectID" Type="int" Nullable="false" />
+          <Property Name="EntityID" Type="int" Nullable="false" />
+          <Property Name="ObjectType" Type="tinyint" Nullable="false" />
+          <Property Name="EntityType" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_Permissions">
+          <Key>
+            <PropertyRef Name="Permission" />
+          </Key>
+          <Property Name="Permission" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedTime" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Desc" Type="nvarchar(max)" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedTime" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+          <Property Name="IsSysAdmin" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_UserRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+          <Property Name="FullName" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Salt" Type="nvarchar(max)" />
+          <Property Name="Phone" Type="nvarchar(max)" />
+          <Property Name="Company" Type="nvarchar(max)" />
+          <Property Name="Avatar" Type="nvarchar(max)" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="LastLoginTime" Type="datetime" Nullable="false" />
+          <Property Name="IsLockedOut" Type="tinyint" Nullable="false" />
+          <Property Name="LastLockoutTime" Type="datetime" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedTime" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+          <Property Name="AccountConfirmationToken" Type="nvarchar(max)" />
+          <Property Name="AgentId" Type="nvarchar(max)" />
+          <Property Name="IsVerification" Type="tinyint" Nullable="false" />
+          <Property Name="MaxClaimDaily" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogDetail">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="AbumImageID" Type="int" />
+          <Property Name="AmountVote" Type="int" />
+          <Property Name="CategoryBlogID" Type="int" />
+          <Property Name="TitleBlog" Type="nvarchar" MaxLength="250" />
+          <Property Name="AuthorName" Type="nvarchar" MaxLength="250" />
+          <Property Name="SourceBlog" Type="nvarchar" MaxLength="250" />
+          <Property Name="PublicationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CategoryBlog">
+          <Key>
+            <PropertyRef Name="CategoryBlogID" />
+          </Key>
+          <Property Name="CategoryBlogID" Type="int" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar" MaxLength="250" />
+          <Property Name="Descripton" Type="nvarchar(max)" />
+          <Property Name="ImageID" Type="int" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="250" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ImageType">
+          <Key>
+            <PropertyRef Name="ImageTypeID" />
+          </Key>
+          <Property Name="ImageTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageID" Type="int" />
+          <Property Name="AbumImageID" Type="int" />
+          <Property Name="TypeImage" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="InfoProfile">
+          <Key>
+            <PropertyRef Name="InfoProfileID" />
+          </Key>
+          <Property Name="InfoProfileID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" />
+          <Property Name="NumberPhone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="250" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Dob" Type="datetime" />
+          <Property Name="LinkFacebook" Type="varchar" MaxLength="300" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Slogan" Type="nvarchar" MaxLength="250" />
+          <Property Name="AbumImageID" Type="int" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSkill" Type="varchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="YearExp" Type="int" />
+          <Property Name="Percent" Type="int" />
+          <Property Name="Level" Type="int" />
+          <Property Name="InfoProfileID" Type="int" />
+        </EntityType>
+        <EntityType Name="Sys_Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Key" Type="nvarchar(max)" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="AllowAdmin" Type="bit" Nullable="false" />
+          <Property Name="IsClient" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedTime" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedTime" Type="datetime" />
+          <Property Name="Deleted" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="WorkExp">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="YearExp" Type="int" />
+          <Property Name="Level" Type="nvarchar" MaxLength="250" />
+          <Property Name="Percent" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="Position" Type="nvarchar" MaxLength="250" />
+          <Property Name="InfoProfileID" Type="int" />
+        </EntityType>
+        <Association Name="FK_BlogDetail_AbumImage">
+          <End Role="AbumImage" Type="Self.AbumImage" Multiplicity="0..1" />
+          <End Role="BlogDetail" Type="Self.BlogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbumImage">
+              <PropertyRef Name="AbumImageID" />
+            </Principal>
+            <Dependent Role="BlogDetail">
+              <PropertyRef Name="AbumImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogDetail_CategoryBlog">
+          <End Role="CategoryBlog" Type="Self.CategoryBlog" Multiplicity="0..1" />
+          <End Role="BlogDetail" Type="Self.BlogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryBlog">
+              <PropertyRef Name="CategoryBlogID" />
+            </Principal>
+            <Dependent Role="BlogDetail">
+              <PropertyRef Name="CategoryBlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryBlog_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="CategoryBlog" Type="Self.CategoryBlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="CategoryBlog">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageType_AbumImage">
+          <End Role="AbumImage" Type="Self.AbumImage" Multiplicity="0..1" />
+          <End Role="ImageType" Type="Self.ImageType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbumImage">
+              <PropertyRef Name="AbumImageID" />
+            </Principal>
+            <Dependent Role="ImageType">
+              <PropertyRef Name="AbumImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageType_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="ImageType" Type="Self.ImageType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="ImageType">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoProfile_AbumImage">
+          <End Role="AbumImage" Type="Self.AbumImage" Multiplicity="0..1" />
+          <End Role="InfoProfile" Type="Self.InfoProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbumImage">
+              <PropertyRef Name="AbumImageID" />
+            </Principal>
+            <Dependent Role="InfoProfile">
+              <PropertyRef Name="AbumImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skill_InfoProfile">
+          <End Role="InfoProfile" Type="Self.InfoProfile" Multiplicity="0..1" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoProfile">
+              <PropertyRef Name="InfoProfileID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="InfoProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkExp_InfoProfile">
+          <End Role="InfoProfile" Type="Self.InfoProfile" Multiplicity="0..1" />
+          <End Role="WorkExp" Type="Self.WorkExp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoProfile">
+              <PropertyRef Name="InfoProfileID" />
+            </Principal>
+            <Dependent Role="WorkExp">
+              <PropertyRef Name="InfoProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogProfileModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AbumImage" EntityType="Self.AbumImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth_Assign" EntityType="Self.Auth_Assign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth_AssignEntity" EntityType="Self.Auth_AssignEntity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth_Permissions" EntityType="Self.Auth_Permissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth_Roles" EntityType="Self.Auth_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth_UserRoles" EntityType="Self.Auth_UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Auth_Users" EntityType="Self.Auth_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BlogDetail" EntityType="Self.BlogDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryBlog" EntityType="Self.CategoryBlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageType" EntityType="Self.ImageType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfoProfile" EntityType="Self.InfoProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sys_Config" EntityType="Self.Sys_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkExp" EntityType="Self.WorkExp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BlogDetail_AbumImage" Association="Self.FK_BlogDetail_AbumImage">
+            <End Role="AbumImage" EntitySet="AbumImage" />
+            <End Role="BlogDetail" EntitySet="BlogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogDetail_CategoryBlog" Association="Self.FK_BlogDetail_CategoryBlog">
+            <End Role="CategoryBlog" EntitySet="CategoryBlog" />
+            <End Role="BlogDetail" EntitySet="BlogDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryBlog_Image" Association="Self.FK_CategoryBlog_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="CategoryBlog" EntitySet="CategoryBlog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageType_AbumImage" Association="Self.FK_ImageType_AbumImage">
+            <End Role="AbumImage" EntitySet="AbumImage" />
+            <End Role="ImageType" EntitySet="ImageType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageType_Image" Association="Self.FK_ImageType_Image">
+            <End Role="Image" EntitySet="Image" />
+            <End Role="ImageType" EntitySet="ImageType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoProfile_AbumImage" Association="Self.FK_InfoProfile_AbumImage">
+            <End Role="AbumImage" EntitySet="AbumImage" />
+            <End Role="InfoProfile" EntitySet="InfoProfile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skill_InfoProfile" Association="Self.FK_Skill_InfoProfile">
+            <End Role="InfoProfile" EntitySet="InfoProfile" />
+            <End Role="Skill" EntitySet="Skill" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkExp_InfoProfile" Association="Self.FK_WorkExp_InfoProfile">
+            <End Role="InfoProfile" EntitySet="InfoProfile" />
+            <End Role="WorkExp" EntitySet="WorkExp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlogProfileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AbumImage">
+          <Key>
+            <PropertyRef Name="AbumImageID" />
+          </Key>
+          <Property Name="AbumImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameAbum" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeAbum" Type="Int32" />
+          <NavigationProperty Name="BlogDetails" Relationship="Self.FK_BlogDetail_AbumImage" FromRole="AbumImage" ToRole="BlogDetail" />
+          <NavigationProperty Name="ImageTypes" Relationship="Self.FK_ImageType_AbumImage" FromRole="AbumImage" ToRole="ImageType" />
+          <NavigationProperty Name="InfoProfiles" Relationship="Self.FK_InfoProfile_AbumImage" FromRole="AbumImage" ToRole="InfoProfile" />
+        </EntityType>
+        <EntityType Name="Auth_Assign">
+          <Key>
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="ObjectID" />
+            <PropertyRef Name="ObjectType" />
+          </Key>
+          <Property Name="Permission" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ObjectID" Type="Int32" Nullable="false" />
+          <Property Name="ObjectType" Type="Byte" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Auth_AssignEntity">
+          <Key>
+            <PropertyRef Name="Permission" />
+            <PropertyRef Name="ObjectID" />
+            <PropertyRef Name="EntityID" />
+            <PropertyRef Name="ObjectType" />
+            <PropertyRef Name="EntityType" />
+          </Key>
+          <Property Name="Permission" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ObjectID" Type="Int32" Nullable="false" />
+          <Property Name="EntityID" Type="Int32" Nullable="false" />
+          <Property Name="ObjectType" Type="Byte" Nullable="false" />
+          <Property Name="EntityType" Type="Byte" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Auth_Permissions">
+          <Key>
+            <PropertyRef Name="Permission" />
+          </Key>
+          <Property Name="Permission" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <Property Name="IsSysAdmin" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_UserRoles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Auth_Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Salt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="LastLoginTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsLockedOut" Type="Byte" Nullable="false" />
+          <Property Name="LastLockoutTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AccountConfirmationToken" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgentId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsVerification" Type="Byte" Nullable="false" />
+          <Property Name="MaxClaimDaily" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BlogDetail">
+          <Key>
+            <PropertyRef Name="BlogID" />
+          </Key>
+          <Property Name="BlogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AbumImageID" Type="Int32" />
+          <Property Name="AmountVote" Type="Int32" />
+          <Property Name="CategoryBlogID" Type="Int32" />
+          <Property Name="TitleBlog" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SourceBlog" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PublicationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="AbumImage" Relationship="Self.FK_BlogDetail_AbumImage" FromRole="BlogDetail" ToRole="AbumImage" />
+          <NavigationProperty Name="CategoryBlog" Relationship="Self.FK_BlogDetail_CategoryBlog" FromRole="BlogDetail" ToRole="CategoryBlog" />
+        </EntityType>
+        <EntityType Name="CategoryBlog">
+          <Key>
+            <PropertyRef Name="CategoryBlogID" />
+          </Key>
+          <Property Name="CategoryBlogID" Type="Int32" Nullable="false" />
+          <Property Name="NameCategory" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Descripton" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageID" Type="Int32" />
+          <NavigationProperty Name="BlogDetails" Relationship="Self.FK_BlogDetail_CategoryBlog" FromRole="CategoryBlog" ToRole="BlogDetail" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_CategoryBlog_Image" FromRole="CategoryBlog" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CategoryBlogs" Relationship="Self.FK_CategoryBlog_Image" FromRole="Image" ToRole="CategoryBlog" />
+          <NavigationProperty Name="ImageTypes" Relationship="Self.FK_ImageType_Image" FromRole="Image" ToRole="ImageType" />
+        </EntityType>
+        <EntityType Name="ImageType">
+          <Key>
+            <PropertyRef Name="ImageTypeID" />
+          </Key>
+          <Property Name="ImageTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageID" Type="Int32" />
+          <Property Name="AbumImageID" Type="Int32" />
+          <Property Name="TypeImage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="AbumImage" Relationship="Self.FK_ImageType_AbumImage" FromRole="ImageType" ToRole="AbumImage" />
+          <NavigationProperty Name="Image" Relationship="Self.FK_ImageType_Image" FromRole="ImageType" ToRole="Image" />
+        </EntityType>
+        <EntityType Name="InfoProfile">
+          <Key>
+            <PropertyRef Name="InfoProfileID" />
+          </Key>
+          <Property Name="InfoProfileID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NumberPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Dob" Type="DateTime" Precision="3" />
+          <Property Name="LinkFacebook" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Slogan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AbumImageID" Type="Int32" />
+          <NavigationProperty Name="AbumImage" Relationship="Self.FK_InfoProfile_AbumImage" FromRole="InfoProfile" ToRole="AbumImage" />
+          <NavigationProperty Name="Skills" Relationship="Self.FK_Skill_InfoProfile" FromRole="InfoProfile" ToRole="Skill" />
+          <NavigationProperty Name="WorkExps" Relationship="Self.FK_WorkExp_InfoProfile" FromRole="InfoProfile" ToRole="WorkExp" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="SkillID" />
+          </Key>
+          <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSkill" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="YearExp" Type="Int32" />
+          <Property Name="Percent" Type="Int32" />
+          <Property Name="Level" Type="Int32" />
+          <Property Name="InfoProfileID" Type="Int32" />
+          <NavigationProperty Name="InfoProfile" Relationship="Self.FK_Skill_InfoProfile" FromRole="Skill" ToRole="InfoProfile" />
+        </EntityType>
+        <EntityType Name="Sys_Config">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Key" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AllowAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="IsClient" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedTime" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="WorkExp">
+          <Key>
+            <PropertyRef Name="WorkID" />
+          </Key>
+          <Property Name="WorkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="YearExp" Type="Int32" />
+          <Property Name="Level" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Percent" Type="Int32" />
+          <Property Name="CompanyName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="InfoProfileID" Type="Int32" />
+          <NavigationProperty Name="InfoProfile" Relationship="Self.FK_WorkExp_InfoProfile" FromRole="WorkExp" ToRole="InfoProfile" />
+        </EntityType>
+        <Association Name="FK_BlogDetail_AbumImage">
+          <End Role="AbumImage" Type="Self.AbumImage" Multiplicity="0..1" />
+          <End Role="BlogDetail" Type="Self.BlogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbumImage">
+              <PropertyRef Name="AbumImageID" />
+            </Principal>
+            <Dependent Role="BlogDetail">
+              <PropertyRef Name="AbumImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageType_AbumImage">
+          <End Role="AbumImage" Type="Self.AbumImage" Multiplicity="0..1" />
+          <End Role="ImageType" Type="Self.ImageType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbumImage">
+              <PropertyRef Name="AbumImageID" />
+            </Principal>
+            <Dependent Role="ImageType">
+              <PropertyRef Name="AbumImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoProfile_AbumImage">
+          <End Role="AbumImage" Type="Self.AbumImage" Multiplicity="0..1" />
+          <End Role="InfoProfile" Type="Self.InfoProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AbumImage">
+              <PropertyRef Name="AbumImageID" />
+            </Principal>
+            <Dependent Role="InfoProfile">
+              <PropertyRef Name="AbumImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BlogDetail_CategoryBlog">
+          <End Role="CategoryBlog" Type="Self.CategoryBlog" Multiplicity="0..1" />
+          <End Role="BlogDetail" Type="Self.BlogDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryBlog">
+              <PropertyRef Name="CategoryBlogID" />
+            </Principal>
+            <Dependent Role="BlogDetail">
+              <PropertyRef Name="CategoryBlogID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CategoryBlog_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="CategoryBlog" Type="Self.CategoryBlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="CategoryBlog">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ImageType_Image">
+          <End Role="Image" Type="Self.Image" Multiplicity="0..1" />
+          <End Role="ImageType" Type="Self.ImageType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Image">
+              <PropertyRef Name="ImageID" />
+            </Principal>
+            <Dependent Role="ImageType">
+              <PropertyRef Name="ImageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Skill_InfoProfile">
+          <End Role="InfoProfile" Type="Self.InfoProfile" Multiplicity="0..1" />
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoProfile">
+              <PropertyRef Name="InfoProfileID" />
+            </Principal>
+            <Dependent Role="Skill">
+              <PropertyRef Name="InfoProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkExp_InfoProfile">
+          <End Role="InfoProfile" Type="Self.InfoProfile" Multiplicity="0..1" />
+          <End Role="WorkExp" Type="Self.WorkExp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InfoProfile">
+              <PropertyRef Name="InfoProfileID" />
+            </Principal>
+            <Dependent Role="WorkExp">
+              <PropertyRef Name="InfoProfileID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BlogProfileEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="AbumImages" EntityType="Self.AbumImage" />
+          <EntitySet Name="Auth_Assign" EntityType="Self.Auth_Assign" />
+          <EntitySet Name="Auth_AssignEntity" EntityType="Self.Auth_AssignEntity" />
+          <EntitySet Name="Auth_Permissions" EntityType="Self.Auth_Permissions" />
+          <EntitySet Name="Auth_Roles" EntityType="Self.Auth_Roles" />
+          <EntitySet Name="Auth_UserRoles" EntityType="Self.Auth_UserRoles" />
+          <EntitySet Name="Auth_Users" EntityType="Self.Auth_Users" />
+          <EntitySet Name="BlogDetails" EntityType="Self.BlogDetail" />
+          <EntitySet Name="CategoryBlogs" EntityType="Self.CategoryBlog" />
+          <EntitySet Name="Images" EntityType="Self.Image" />
+          <EntitySet Name="ImageTypes" EntityType="Self.ImageType" />
+          <EntitySet Name="InfoProfiles" EntityType="Self.InfoProfile" />
+          <EntitySet Name="Skills" EntityType="Self.Skill" />
+          <EntitySet Name="Sys_Config" EntityType="Self.Sys_Config" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="WorkExps" EntityType="Self.WorkExp" />
+          <AssociationSet Name="FK_BlogDetail_AbumImage" Association="Self.FK_BlogDetail_AbumImage">
+            <End Role="AbumImage" EntitySet="AbumImages" />
+            <End Role="BlogDetail" EntitySet="BlogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageType_AbumImage" Association="Self.FK_ImageType_AbumImage">
+            <End Role="AbumImage" EntitySet="AbumImages" />
+            <End Role="ImageType" EntitySet="ImageTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoProfile_AbumImage" Association="Self.FK_InfoProfile_AbumImage">
+            <End Role="AbumImage" EntitySet="AbumImages" />
+            <End Role="InfoProfile" EntitySet="InfoProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BlogDetail_CategoryBlog" Association="Self.FK_BlogDetail_CategoryBlog">
+            <End Role="CategoryBlog" EntitySet="CategoryBlogs" />
+            <End Role="BlogDetail" EntitySet="BlogDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CategoryBlog_Image" Association="Self.FK_CategoryBlog_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="CategoryBlog" EntitySet="CategoryBlogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ImageType_Image" Association="Self.FK_ImageType_Image">
+            <End Role="Image" EntitySet="Images" />
+            <End Role="ImageType" EntitySet="ImageTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Skill_InfoProfile" Association="Self.FK_Skill_InfoProfile">
+            <End Role="InfoProfile" EntitySet="InfoProfiles" />
+            <End Role="Skill" EntitySet="Skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkExp_InfoProfile" Association="Self.FK_WorkExp_InfoProfile">
+            <End Role="InfoProfile" EntitySet="InfoProfiles" />
+            <End Role="WorkExp" EntitySet="WorkExps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlogProfileModelStoreContainer" CdmEntityContainer="BlogProfileEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="BlogProfileModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AbumImages">
+            <EntityTypeMapping TypeName="BlogProfileModel.AbumImage">
+              <MappingFragment StoreEntitySet="AbumImage">
+                <ScalarProperty Name="AbumImageID" ColumnName="AbumImageID" />
+                <ScalarProperty Name="NameAbum" ColumnName="NameAbum" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TypeAbum" ColumnName="TypeAbum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth_Assign">
+            <EntityTypeMapping TypeName="BlogProfileModel.Auth_Assign">
+              <MappingFragment StoreEntitySet="Auth_Assign">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth_AssignEntity">
+            <EntityTypeMapping TypeName="BlogProfileModel.Auth_AssignEntity">
+              <MappingFragment StoreEntitySet="Auth_AssignEntity">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="EntityType" ColumnName="EntityType" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth_Permissions">
+            <EntityTypeMapping TypeName="BlogProfileModel.Auth_Permissions">
+              <MappingFragment StoreEntitySet="Auth_Permissions">
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth_Roles">
+            <EntityTypeMapping TypeName="BlogProfileModel.Auth_Roles">
+              <MappingFragment StoreEntitySet="Auth_Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Desc" ColumnName="Desc" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="IsSysAdmin" ColumnName="IsSysAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth_UserRoles">
+            <EntityTypeMapping TypeName="BlogProfileModel.Auth_UserRoles">
+              <MappingFragment StoreEntitySet="Auth_UserRoles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Auth_Users">
+            <EntityTypeMapping TypeName="BlogProfileModel.Auth_Users">
+              <MappingFragment StoreEntitySet="Auth_Users">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLockoutTime" ColumnName="LastLockoutTime" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="AccountConfirmationToken" ColumnName="AccountConfirmationToken" />
+                <ScalarProperty Name="AgentId" ColumnName="AgentId" />
+                <ScalarProperty Name="IsVerification" ColumnName="IsVerification" />
+                <ScalarProperty Name="MaxClaimDaily" ColumnName="MaxClaimDaily" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BlogDetails">
+            <EntityTypeMapping TypeName="BlogProfileModel.BlogDetail">
+              <MappingFragment StoreEntitySet="BlogDetail">
+                <ScalarProperty Name="BlogID" ColumnName="BlogID" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AbumImageID" ColumnName="AbumImageID" />
+                <ScalarProperty Name="AmountVote" ColumnName="AmountVote" />
+                <ScalarProperty Name="CategoryBlogID" ColumnName="CategoryBlogID" />
+                <ScalarProperty Name="TitleBlog" ColumnName="TitleBlog" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="SourceBlog" ColumnName="SourceBlog" />
+                <ScalarProperty Name="PublicationDate" ColumnName="PublicationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryBlogs">
+            <EntityTypeMapping TypeName="BlogProfileModel.CategoryBlog">
+              <MappingFragment StoreEntitySet="CategoryBlog">
+                <ScalarProperty Name="CategoryBlogID" ColumnName="CategoryBlogID" />
+                <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+                <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="BlogProfileModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageTypes">
+            <EntityTypeMapping TypeName="BlogProfileModel.ImageType">
+              <MappingFragment StoreEntitySet="ImageType">
+                <ScalarProperty Name="ImageTypeID" ColumnName="ImageTypeID" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="AbumImageID" ColumnName="AbumImageID" />
+                <ScalarProperty Name="TypeImage" ColumnName="TypeImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoProfiles">
+            <EntityTypeMapping TypeName="BlogProfileModel.InfoProfile">
+              <MappingFragment StoreEntitySet="InfoProfile">
+                <ScalarProperty Name="InfoProfileID" ColumnName="InfoProfileID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NumberPhone" ColumnName="NumberPhone" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Dob" ColumnName="Dob" />
+                <ScalarProperty Name="LinkFacebook" ColumnName="LinkFacebook" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Slogan" ColumnName="Slogan" />
+                <ScalarProperty Name="AbumImageID" ColumnName="AbumImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="BlogProfileModel.Skill">
+              <MappingFragment StoreEntitySet="Skill">
+                <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+                <ScalarProperty Name="NameSkill" ColumnName="NameSkill" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="YearExp" ColumnName="YearExp" />
+                <ScalarProperty Name="Percent" ColumnName="Percent" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="InfoProfileID" ColumnName="InfoProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sys_Config">
+            <EntityTypeMapping TypeName="BlogProfileModel.Sys_Config">
+              <MappingFragment StoreEntitySet="Sys_Config">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AllowAdmin" ColumnName="AllowAdmin" />
+                <ScalarProperty Name="IsClient" ColumnName="IsClient" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedTime" ColumnName="UpdatedTime" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BlogProfileModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkExps">
+            <EntityTypeMapping TypeName="BlogProfileModel.WorkExp">
+              <MappingFragment StoreEntitySet="WorkExp">
+                <ScalarProperty Name="WorkID" ColumnName="WorkID" />
+                <ScalarProperty Name="YearExp" ColumnName="YearExp" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Percent" ColumnName="Percent" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="InfoProfileID" ColumnName="InfoProfileID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

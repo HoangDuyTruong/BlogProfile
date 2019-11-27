@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d3982a003039407b99ad897f259fa21e" Name="Diagram1">
+        <EntityTypeShape EntityType="BlogProfileModel.C__MigrationHistory" Width="1.5" PointX="2.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.AbumImage" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Auth_Assign" Width="1.5" PointX="4.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Auth_AssignEntity" Width="1.5" PointX="5.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Auth_Permissions" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Auth_Roles" Width="1.5" PointX="8.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Auth_UserRoles" Width="1.5" PointX="8.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Auth_Users" Width="1.5" PointX="10.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.BlogDetail" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.CategoryBlog" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Image" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.ImageType" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.InfoProfile" Width="1.5" PointX="3" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Skill" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.Sys_Config" Width="1.5" PointX="10.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.sysdiagram" Width="1.5" PointX="7.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlogProfileModel.WorkExp" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <AssociationConnector Association="BlogProfileModel.FK_BlogDetail_AbumImage" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_ImageType_AbumImage" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_InfoProfile_AbumImage" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_BlogDetail_CategoryBlog" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_CategoryBlog_Image" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_ImageType_Image" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_Skill_InfoProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="BlogProfileModel.FK_WorkExp_InfoProfile" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
