@@ -20,11 +20,6 @@ namespace DomainBlog.Profile.Models
         {
         }
     
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
         public DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public DbSet<AbumImage> AbumImages { get; set; }
         public DbSet<Auth_Assign> Auth_Assign { get; set; }
