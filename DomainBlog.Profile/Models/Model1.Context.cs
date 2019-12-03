@@ -18,6 +18,7 @@ namespace DomainBlog.Profile.Models
         public BlogProfileEntities()
             : base("name=BlogProfileEntities")
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
     
         public DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
