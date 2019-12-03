@@ -20,7 +20,19 @@ namespace ServiceBlog.Implement
         }
         public BlogDetail Create(BlogDetail obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+                return null;
+            try
+            {
+                var model = context.BlogDetails.Add(obj);
+                context.SaveChanges();
+                return model;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
         }
 
         public bool Delete(int id)
@@ -47,7 +59,26 @@ namespace ServiceBlog.Implement
 
         public bool Edit(BlogDetail obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+                return false;
+            BlogDetail blogEdit = context.BlogDetails.FirstOrDefault(x => x.BlogID == obj.BlogID);
+            if (blogEdit == null)
+                return false;
+            blogEdit.AuthorName = obj.AuthorName;
+            blogEdit.CategoryBlogID = obj.CategoryBlogID;
+            blogEdit.Description = obj.Description;
+            blogEdit.Content = obj.Content;
+            blogEdit.TitleBlog = obj.TitleBlog;
+            try
+            {
+                context.BlogDetails.Attach(blogEdit);
+                context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public  BaseView<BlogDetail> Get(out int total,InputBase input)
@@ -83,7 +114,7 @@ namespace ServiceBlog.Implement
 
         public BlogDetail GetId(int Id)
         {
-            throw new NotImplementedException();
+            return context.BlogDetails.FirstOrDefault(x => x.BlogID == Id);
         }
     }
 }
