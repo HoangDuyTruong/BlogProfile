@@ -75,15 +75,24 @@
     <Compile Include="Implement\ServiceAlbum.cs" />
     <Compile Include="Implement\ServiceBlog.cs" />
     <Compile Include="Implement\ServiceImage.cs" />
+    <Compile Include="Implement\ServiceInfoProfile.cs" />
+    <Compile Include="Implement\ServiceSkill.cs" />
+    <Compile Include="Implement\ServiceWorkExp.cs" />
     <Compile Include="Inteface\IResponsitory.cs" />
     <Compile Include="Inteface\IServiceAlbum.cs" />
     <Compile Include="Inteface\IServiceBlog.cs" />
     <Compile Include="Inteface\IServiceImage.cs" />
+    <Compile Include="Inteface\IServiceInfoProfile.cs" />
+    <Compile Include="Inteface\IServiceSkill.cs" />
+    <Compile Include="Inteface\IServiceWorkExp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\BaseView.cs" />
     <Compile Include="ViewModel\InputData\InputBase.cs" />
     <Compile Include="ViewModel\InputData\InputBlog.cs" />
     <Compile Include="ViewModel\InputData\InputImage.cs" />
+    <Compile Include="ViewModel\InputData\InputInfoProfile.cs" />
+    <Compile Include="ViewModel\InputData\InputSkill.cs" />
+    <Compile Include="ViewModel\InputData\InputWorkExp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

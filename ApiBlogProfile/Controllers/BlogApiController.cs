@@ -14,7 +14,7 @@ namespace ApiBlogProfile.Controllers
     public class BlogApiController : ApiController
     {
         public IHttpActionResult Get()
-        {
+       {
             int total = 0;
             var data = BlogDI.blogService.Get(out total, new InputBlog() {
                 FillterIdCategory = 2,
